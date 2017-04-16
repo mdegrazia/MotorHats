@@ -23,7 +23,7 @@ Rumble = False
 wm.rpt_mode = cwiid.RPT_BTN
 motors.setSpeeds(0, 0)
 #MAX_SPEED is 480
-s = 300
+speed = 300
 while True:
 	print  wm.state['buttons']
 	direction = wm.state['buttons']
@@ -31,16 +31,16 @@ while True:
 	if direction == 256:
 		#move both motors backward
 		print "move backwards"
-		motors.motor1.setSpeed(-s)
-		motors.motor2.setSpeed(-s)
+		motors.motor1.setSpeed(-speed)
+		motors.motor2.setSpeed(-speed)
 		time.sleep(.1)
 		motors.motor1.setSpeed(0)
 		motors.motor2.setSpeed(0)
 
 	if direction == 512:
 		print "move Forward"
-		motors.motor1.setSpeed(s)
-		motors.motor2.setSpeed(s)
+		motors.motor1.setSpeed(speed)
+		motors.motor2.setSpeed(speed)
 		time.sleep(.1)
 		motors.motor1.setSpeed(0)
 		motors.motor2.setSpeed(0)
@@ -48,8 +48,8 @@ while True:
 	#to make it turn, make one wheel move slower then the other	
 	if direction == 1024:
 		print "move right"
-		motors.motor1.setSpeed(s-50)
-		motors.motor2.setSpeed(s)
+		motors.motor1.setSpeed(speed-50)
+		motors.motor2.setSpeed(speed)
 		time.sleep(.1)
 		motors.motor1.setSpeed(0)
 		motors.motor2.setSpeed(0)
@@ -57,8 +57,8 @@ while True:
 		
 	if direction == 2048:
 		print "move left"
-		motors.motor1.setSpeed(s)
-		motors.motor2.setSpeed(s-50)
+		motors.motor1.setSpeed(speed)
+		motors.motor2.setSpeed(speed-50)
 		time.sleep(.1)
 		motors.motor1.setSpeed(0)
 		motors.motor2.setSpeed(0)
