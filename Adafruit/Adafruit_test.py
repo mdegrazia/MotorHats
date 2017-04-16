@@ -1,4 +1,7 @@
 #!/usr/bin/python
+#Written by Mari DeGrazia for the Tucson Pi-Bot Wars
+#arizona4n6@gmail.com
+
 from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor
 
 import time
@@ -27,25 +30,28 @@ myMotor2 = mh.getMotor(2)
 myMotor3 = mh.getMotor(3)
 myMotor4 = mh.getMotor(4)
 
+#max speed is 255
+speed = 200
+
 # set the speed to start, from 0 (off) to 255 (max speed)
-myMotor1.setSpeed(255)
+myMotor1.setSpeed(speed)
 myMotor1.run(Adafruit_MotorHAT.FORWARD);
 # turn on motor
 myMotor1.run(Adafruit_MotorHAT.RELEASE);
 
-myMotor2.setSpeed(255)
+myMotor2.setSpeed(speed)
 myMotor2.run(Adafruit_MotorHAT.FORWARD);
 # turn on motor
 myMotor2.run(Adafruit_MotorHAT.RELEASE);
 
 
-myMotor3.setSpeed(255)
+myMotor3.setSpeed(speed)
 myMotor3.run(Adafruit_MotorHAT.FORWARD);
 # turn on motor
 myMotor3.run(Adafruit_MotorHAT.RELEASE);
 
 
-myMotor4.setSpeed(255)
+myMotor4.setSpeed(speed)
 myMotor4.run(Adafruit_MotorHAT.FORWARD);
 # turn on motor
 myMotor4.run(Adafruit_MotorHAT.RELEASE);

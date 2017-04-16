@@ -1,4 +1,7 @@
 #!/usr/bin/python
+#Written by Mari DeGrazia for the Tucson Pi-Bot Wars
+#arizona4n6@gmail.com
+
 from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor
 import time
 import atexit
@@ -31,12 +34,21 @@ myMotor4 = mh.getMotor(4)
 print 'Press button 1 + 2 on your Wii Remote...'
 time.sleep(1)
 
-wm=cwiid.Wiimote()
+wm = None
+while not wm:
+	try:
+		wm=cwiid.Wiimote()
+	except:
+		print "Still looking for Wii remote..."
+		pass
+
+
 print 'Wii Remote connected...'
 time.sleep(1)
 
 Rumble = False
 wm.rpt_mode = cwiid.RPT_BTN
+#max speed is 255
 speed = 200
 
 while True:
@@ -79,23 +91,6 @@ while True:
 	#to make it turn, make one wheel move slower then the other	
 	if direction == 1024:
 		print "Move Right"
-		myMotor1.setSpeed(speed)
-		myMotor1.run(Adafruit_MotorHAT.FORWARD)
-		
-		myMotor2.setSpeed(speed-100)
-		myMotor2.run(Adafruit_MotorHAT.FORWARD)
-		
-		myMotor3.setSpeed(speed)
-		myMotor3.run(Adafruit_MotorHAT.FORWARD)
-		
-		myMotor4.setSpeed(speed-100)
-		myMotor4.run(Adafruit_MotorHAT.FORWARD)
-		time.sleep(.1)
-		
-		turnOffMotors()
-
-	if direction == 2048:
-		print "Move Left"
 		myMotor1.setSpeed(speed-100)
 		myMotor1.run(Adafruit_MotorHAT.FORWARD)
 		
@@ -106,6 +101,23 @@ while True:
 		myMotor3.run(Adafruit_MotorHAT.FORWARD)
 		
 		myMotor4.setSpeed(speed)
+		myMotor4.run(Adafruit_MotorHAT.FORWARD)
+		time.sleep(.1)
+		
+		turnOffMotors()
+
+	if direction == 2048:
+		print "Move Left"
+		myMotor1.setSpeed(speed)
+		myMotor1.run(Adafruit_MotorHAT.FORWARD)
+		
+		myMotor2.setSpeed(speed-100)
+		myMotor2.run(Adafruit_MotorHAT.FORWARD)
+		
+		myMotor3.setSpeed(speed)
+		myMotor3.run(Adafruit_MotorHAT.FORWARD)
+		
+		myMotor4.setSpeed(speed-100)
 		myMotor4.run(Adafruit_MotorHAT.FORWARD)
 		time.sleep(.1)
 		
